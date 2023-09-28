@@ -16,21 +16,30 @@
   <meta name="author" content="CaiYaqi">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="笔者近期快速刷了几篇与检索增强语言模型 (Retrieval-Augmented Language Modeling) 相关的文章，并自行将其归为了三类。这篇笔记记录的文章大多基于LLM自身的推理能力来对检索方式进行设计。 Investigating the Factual Knowledge Boundary of Large Language Models with Retrieval Aug">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://ccyaqi.github.io/2023/09/27/hello-world/index.html">
+<meta property="og:title" content="[论文阅读] RALM 1">
+<meta property="og:url" content="https://ccyaqi.github.io/2023/09/28/RALM1/index.html">
 <meta property="og:site_name" content="cyq.blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="笔者近期快速刷了几篇与检索增强语言模型 (Retrieval-Augmented Language Modeling) 相关的文章，并自行将其归为了三类。这篇笔记记录的文章大多基于LLM自身的推理能力来对检索方式进行设计。 Investigating the Factual Knowledge Boundary of Large Language Models with Retrieval Aug">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-09-27T05:17:09.534Z">
-<meta property="article:modified_time" content="2023-09-27T05:17:09.534Z">
+<meta property="og:image" content="https://ccyaqi.github.io/2023/09/28/RALM1/RALM1/IRCoT.png">
+<meta property="og:image" content="https://ccyaqi.github.io/2023/09/28/RALM1/RALM1/FLARE1.png">
+<meta property="og:image" content="https://ccyaqi.github.io/2023/09/28/RALM1/RALM1/FLARE2.png">
+<meta property="og:image" content="https://ccyaqi.github.io/2023/09/28/RALM1/RALM1/Decomposed%20Prompting.png">
+<meta property="og:image" content="https://ccyaqi.github.io/2023/09/28/RALM1/RALM1/Searchain.png">
+<meta property="article:published_time" content="2023-09-28T09:32:52.000Z">
+<meta property="article:modified_time" content="2023-09-28T10:08:31.736Z">
 <meta property="article:author" content="CaiYaqi">
+<meta property="article:tag" content="RALM">
+<meta property="article:tag" content="NLP">
+<meta property="article:tag" content="IR">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://ccyaqi.github.io/2023/09/28/RALM1/RALM1/IRCoT.png">
   
   
   
-  <title>Hello World - cyq.blog</title>
+  <title>[论文阅读] RALM 1 - cyq.blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -225,7 +234,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text="[论文阅读] RALM 1"></span>
           
         </div>
 
@@ -236,8 +245,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-27 13:17" pubdate>
-          2023年9月27日 下午
+        <time datetime="2023-09-28 17:32" pubdate>
+          2023年9月28日 下午
         </time>
       </span>
     
@@ -248,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          367 字
+          3.3k 字
         
       </span>
     
@@ -259,7 +268,7 @@
         
         
         
-          4 分钟
+          28 分钟
         
       </span>
     
@@ -304,24 +313,83 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hello World</h1>
+            <h1 id="seo-header">[论文阅读] RALM 1</h1>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+                <p>笔者近期快速刷了几篇与检索增强语言模型 (<strong>R</strong>etrieval-<strong>A</strong>ugmented <strong>L</strong>anguage <strong>M</strong>odeling) 相关的文章，并<em>自行</em>将其归为了三类。这篇笔记记录的文章大多基于LLM自身的推理能力来对检索方式进行设计。</p>
+<h3 id="Investigating-the-Factual-Knowledge-Boundary-of-Large-Language-Models-with-Retrieval-Augmentation"><a href="#Investigating-the-Factual-Knowledge-Boundary-of-Large-Language-Models-with-Retrieval-Augmentation" class="headerlink" title="Investigating the Factual Knowledge Boundary of Large Language Models with Retrieval Augmentation"></a>Investigating the Factual Knowledge Boundary of Large Language Models with Retrieval Augmentation</h3><p><strong>paper:</strong> <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2307.11019">https://arxiv.org/abs/2307.11019</a></p>
+<p><strong>code:</strong> <a target="_blank" rel="noopener" href="https://github.com/RUCAIBox/LLM-Knowledge-Boundary">https://github.com/RUCAIBox/LLM-Knowledge-Boundary</a></p>
+<p><strong>Motivation.</strong> 目前，领域内缺乏对LLM事实知识边界的深入了解。</p>
+<p><strong>内容.</strong> 文章回答了如下问题：</p>
+<ul>
+<li><p>LLM感知其事实知识边界的能力如何？ LLM对事实知识边界的感知是不准确的，并对自身结果过度自信。</p>
+</li>
+<li><p>检索增强对LLM有什么影响？ LLM不能充分利用它们所拥有的知识，而检索增强可以一定程度上弥补这一缺陷。</p>
+</li>
+<li><p>具有不同特征的辅助文档如何影响LLM？ 提供高质量的辅助文档时，LLM性能更佳且更加自信；LLM倾向于依赖所提供的辅助文档生成反馈。辅助文档与问题的相关性越强，LLM越自信，也更加依赖辅助文档。</p>
+</li>
+</ul>
+<p><strong>思考.</strong> 文章发现<strong>基于先验判断动态地引入检索能很好地提升性能</strong>。即先要求LLM判断它们是否能够提供问题的答案能很好地提升性能，这能给检索增强模型的设计带来启发。</p>
+<h3 id="Interleaving-Retrieval-with-Chain-of-Thought-Reasoning-for-Knowledge-Intensive-Multi-Step-Questions"><a href="#Interleaving-Retrieval-with-Chain-of-Thought-Reasoning-for-Knowledge-Intensive-Multi-Step-Questions" class="headerlink" title="Interleaving Retrieval with Chain-of-Thought Reasoning for Knowledge-Intensive Multi-Step Questions"></a>Interleaving Retrieval with Chain-of-Thought Reasoning for Knowledge-Intensive Multi-Step Questions</h3><p><strong>paper:</strong> <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2212.10509">https://arxiv.org/abs/2212.10509</a></p>
+<p><strong>code:</strong> <a target="_blank" rel="noopener" href="https://github.com/stonybrooknlp/ircot">https://github.com/stonybrooknlp/ircot</a></p>
+<p><strong>Motivation.</strong> 对于复杂的多步骤推理问题，仅对知识库进行一次检索是不够的。</p>
+<p><strong>Framework.</strong> IRCoT利用LMs的CoT生成能力来指导检索，并反过来使用检索来改进CoT推理：</p>
+<p>首先，将问题作为query检索一组基本段落；然后，交替进行以下两个步骤:</p>
+<ol>
+<li>扩展CoT: 使用问题、迄今为止收集到的段落和迄今为止生成的CoT句子来生成下一个CoT句子;</li>
+<li>扩展检索到的信息: 使用最后一个CoT句子作为query来检索其他段落。</li>
+</ol>
+<p>重复上述步骤，直到CoT报告答案，或达到所允许的最大推理步骤数。终止时，将所有收集到的段落作为检索结果返回。</p>
+<img src="RALM1/IRCoT.png" srcset="/img/loading.gif" lazyload style="zoom: 50%;" />
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
+<h3 id="Active-Retrieval-Augmented-Generation"><a href="#Active-Retrieval-Augmented-Generation" class="headerlink" title="Active Retrieval Augmented Generation"></a>Active Retrieval Augmented Generation</h3><p><strong>paper:</strong> <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2305.06983">https://arxiv.org/abs/2305.06983</a></p>
+<p><strong>code:</strong> <a target="_blank" rel="noopener" href="https://github.com/jzbjyb/FLARE">https://github.com/jzbjyb/FLARE</a></p>
+<p><strong>Motivation.</strong> 1、大多现有的检索增强LLMs仅根据输入检索一次信息，但在涉及生成长文本的更一般的场景中，在生成过程中不断收集信息是必不可少的。2、过去尝试在生成输出时进行多次检索的工作主要以固定的间隔使用前面的文本作为query。</p>
+<p><strong>Framework.</strong> 文章提出的FLARE能在整个生成过程中<strong>主动决定</strong>何时检索和检索什么，并给出了$FLARE_{instruct}$和$FLARE_{direct}$两种方法。</p>
+<ol>
+<li><p>$FLARE_{instruct}$: 提示LM在必要时生成retrieval queries，同时使用retrieval-encouraging指令生成回答: 让LM在需要额外信息时生成“[Search(query)]”。但可能会出现以下问题：</p>
+<ol>
+<li>LMs产生的search queries比需要的少：对token “[” 的logit加上2.0来解决。</li>
+<li>生成过多的search queries可能会破坏答案的生成、对性能产生影响：用search queries检索相关信息时，及时将“[Search(query)]”从生成中删除，并向“[” 的logit添加一个大的负值来禁止“[” 。</li>
+</ol>
+<img src="RALM1/FLARE1.png" srcset="/img/loading.gif" lazyload style="zoom: 33%;" />
+</li>
+<li><p>$FLARE_{direct}$: 直接使用LM的生成作为queries。由两部分组成：</p>
+<ol>
+<li><p>基于置信度的主动检索：令$s ̂_t$为LM在第t步临时生成的句子、$θ$为阈值，当$s ̂_t$中有token的概率小于$θ$时，则触发检索；</p>
+</li>
+<li><p>基于置信度的query表示：给出了两种query表示方法：1) Masked sentences作为隐式query：mask概率低于置信度的tokens；2) 生成问题作为显示query：提取概率低于置信度的所有区间，对于每个提取的区间z，提示gpt-3.5-turbo生成一个问题，这个问题可以用z来回答。</p>
+<img src="RALM1/FLARE2.png" srcset="/img/loading.gif" lazyload style="zoom:33%;" /></li>
+</ol>
+</li>
+</ol>
+<h3 id="Decomposed-Prompting-A-Modular-Approach-for-Solving-Complex-Tasks"><a href="#Decomposed-Prompting-A-Modular-Approach-for-Solving-Complex-Tasks" class="headerlink" title="Decomposed Prompting: A Modular Approach for Solving Complex Tasks"></a>Decomposed Prompting: A Modular Approach for Solving Complex Tasks</h3><p><strong>paper:</strong> <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2210.02406">https://arxiv.org/abs/2210.02406</a></p>
+<p><strong>code:</strong> <a target="_blank" rel="noopener" href="https://github.com/allenai/DecomP">https://github.com/allenai/DecomP</a></p>
+<p><strong>Motivation.</strong> Few-shot prompting是使用LLMs解决各种任务的一种强大方法，但当任务的复杂性增加或任务本身的单个推理步骤难以学习时，这种方法就会出现问题。</p>
+<p><strong>Method.</strong> 如图，将复杂问题提供给decomposer prompt以获得第一个子问题Q1，并将其提供给split prompt，由这个prompt生成的答案随后被附加到decomposer prompt中，以获得第二个子问题Q2，因为该问题中含有foreach操作符，所以会生成两个问题，并将它们提供给str_pos prompt以得到关于两个回答的数组，这用于生成第三个子问题Q3，并提供给merge prompt以获得最终答案。因为问题已经被解决，所以decomposer prompt会产生结束标记[EOQ]并将前一个回答作为最终答案返回。</p>
+<img src="RALM1/Decomposed Prompting.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+
+<h3 id="Search-in-the-Chain-Towards-Accurate-Credible-and-Traceable-Large-Language-Models-for-Knowledge-intensive-Tasks"><a href="#Search-in-the-Chain-Towards-Accurate-Credible-and-Traceable-Large-Language-Models-for-Knowledge-intensive-Tasks" class="headerlink" title="Search-in-the-Chain: Towards Accurate, Credible and Traceable Large Language Models for Knowledge-intensive Tasks"></a>Search-in-the-Chain: Towards Accurate, Credible and Traceable Large Language Models for Knowledge-intensive Tasks</h3><p><strong>paper:</strong> <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2304.14732v6">https://arxiv.org/abs/2304.14732v6</a></p>
+<p><strong>code:</strong> <a target="_blank" rel="noopener" href="https://github.com/xsc1234/Search-in-the-Chain">https://github.com/xsc1234/Search-in-the-Chain</a></p>
+<p><strong>Motivation.</strong> 之前的工作存在着由IR检索到错误的知识对LLM产生误导或破坏LLM推理链的缺点。此外，以前的方法假设推理链中生成的答案总是正确的，不能在必要时及时修改推理方向。</p>
+<p><strong>Framework.</strong> SearChain关注推理链的全局规划：</p>
+<p>首先，让LLM构建一个全局推理链C，其中每个节点是一个query-answer对，如果对于某个节点，LLM不知道答案，则将query标记为[Unsolved Query]. 在每一轮交互中，IR对C上每个节点的信息进行<em>验证和补全</em>，直到C上所有query都不需要更正或达到最大交互轮数时结束。</p>
+<p><em>验证：</em>如果$a_i$与检索到的文档$d_i$信息不一致，则构建一个prompt帮助LLM更正$a_i$得到$a_i^′$，并生成一个以$(q_i,a_i^′)$为根节点的推理链CoQ.</p>
+<p><em>补全：</em>对于被标记为[Unsolved Query]的query $q_i^∗$, $d_i^∗$ 为检索到的文档，$g^∗$为从文档中提取到的答案，$g^∗$和$d_i^∗$将以prompt的形式反馈给LLM，LLM收到反馈给出答案$a_i^∗$，并生成一个以$(q_i^∗,a_i^∗)$为根节点的推理链CoQ.</p>
+<img src="RALM1/Searchain.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
+
+
+
+<h3 id="In-Context-Retrieval-Augmented-Language-Models"><a href="#In-Context-Retrieval-Augmented-Language-Models" class="headerlink" title="In-Context Retrieval-Augmented Language Models"></a>In-Context Retrieval-Augmented Language Models</h3><p><strong>paper:</strong> <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2302.00083">https://arxiv.org/abs/2302.00083</a></p>
+<p><strong>code:</strong> <a target="_blank" rel="noopener" href="https://github.com/AI21Labs/in-context-ralm">https://github.com/AI21Labs/in-context-ralm</a></p>
+<p><strong>内容.</strong> 论文提出In-Context RALM。论文还针对 (1) 哪种现成检索器最适合语言建模；(2) 检索操作的频率；(3) 最佳的query长度 进行了分析，并引入了两种重排方法。</p>
+<p>![](RALM1&#x2F;In-context RALM.png)</p>
 
                 
               </div>
@@ -330,6 +398,38 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/paper-reading/" class="category-chain-item">paper-reading</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/RALM/" class="print-no-link">#RALM</a>
+      
+        <a href="/tags/NLP/" class="print-no-link">#NLP</a>
+      
+        <a href="/tags/IR/" class="print-no-link">#IR</a>
+      
+    </div>
   
 </div>
 
@@ -339,8 +439,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>https://ccyaqi.github.io/2023/09/27/hello-world/</div>
+      <div>[论文阅读] RALM 1</div>
+      <div>https://ccyaqi.github.io/2023/09/28/RALM1/</div>
     </div>
     <div class="license-meta">
       
@@ -352,7 +452,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年9月27日</div>
+          <div>2023年9月28日</div>
         </div>
       
       
@@ -383,12 +483,6 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
-                    
-                      <a href="/2023/09/27/test/" title="test">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">test</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
                     
                   </article>
                   <article class="post-next col-6">
@@ -521,10 +615,6 @@
 
   <footer>
     <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-    </div>
   
   
     <div class="statistics">
