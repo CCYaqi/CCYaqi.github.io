@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>DDIM</title>
+    <link href="/2023/10/05/DDIM/"/>
+    <url>/2023/10/05/DDIM/</url>
+    
+    <content type="html"><![CDATA[<p>跟着张老师学扩散模型系列2——DDIM，会持续更新。</p><p><strong>paper</strong>：<a href="https://arxiv.org/abs/2010.02502">https://arxiv.org/abs/2010.02502</a></p><p>DDIM通过去马尔可夫化的方式来实现加速采样，且生成样本的过程是确定的：<a href="https://zhuanlan.zhihu.com/p/627616358">https://zhuanlan.zhihu.com/p/627616358</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Diffusion Model</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>DDIM</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>[论文阅读] RALM 2</title>
     <link href="/2023/10/04/RALM2/"/>
     <url>/2023/10/04/RALM2/</url>
