@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Docker学习</title>
+    <link href="/2023/10/09/docker/"/>
+    <url>/2023/10/09/docker/</url>
+    
+    <content type="html"><![CDATA[<p>由于实验室服务器的问题（浅浅吐槽一下），<s>被迫</s>快速上手Docker（其实也是想学很久了），于是借着这个契机<s>狠狠</s>实践一下了。</p><hr /><p>Docker中的image（镜像）和container（容器）：</p><ul><li><p><a href="https://blog.csdn.net/taifei/article/details/82697312">container和image的关系</a></p></li><li><p><a href="https://zhuanlan.zhihu.com/p/132446425">镜像和容器的基础操作命令</a></p></li><li><p><a href="https://www.jianshu.com/p/dbf40a17763b">Image与Container的介绍与操作</a></p></li></ul><p>Docker Desktop的使用：<a href="https://blog.csdn.net/qq_39611230/article/details/108641842">从零开始的Docker Desktop使用</a></p><p>在vscode中使用Docker：<a href="https://learn.microsoft.com/zh-cn/visualstudio/docker/tutorials/docker-tutorial">开始在 Visual Studio Code 中使用 Docker 应用</a></p><p>在服务器中部署Docker（来自kk的师兄）：<a href="https://github.com/ddlBoJack/pre-train-dockerfile">https://github.com/ddlBoJack/pre-train-dockerfile</a></p><p>其他：<a href="https://www.runoob.com/docker/docker-tutorial.html">Docker 教程</a></p><p>以及康康提供的一些资料，供后续学习使用（感谢kk）：</p><ol><li><a href="https://docker-practice.github.io/zh-cn/">docker 从入门到实践</a></li><li><a href="https://saturncloud.io/blog/how-to-install-pytorch-on-the-gpu-with-docker/">how-to-install-pytorch-on-the-gpu-with-docker</a></li><li><a href="https://blog.csdn.net/weixin_38834436/article/details/101707931">如何将深度学习中的项目打包成Dockerfile</a></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>其他</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Docker</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>DDIM</title>
     <link href="/2023/10/05/DDIM/"/>
     <url>/2023/10/05/DDIM/</url>
