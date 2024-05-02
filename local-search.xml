@@ -29,6 +29,58 @@
   
   
   <entry>
+    <title>Stable Diffusion</title>
+    <link href="/2023/10/10/sd/"/>
+    <url>/2023/10/10/sd/</url>
+    
+    <content type="html"><![CDATA[<p>咱张老师建议我先学Stable Diffusion，速速学起！持续更新。</p><hr /><p>Stable Diffusion是基于Latent Diffusion Models (LDMs, paper: <a href="https://arxiv.org/abs/2112.10752">https://arxiv.org/abs/2112.10752</a>) 的文生图模型，所以先学LDMs：<a href="https://zhuanlan.zhihu.com/p/582693939">https://zhuanlan.zhihu.com/p/582693939</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Diffusion Model</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Stable Diffusion</tag>
+      
+      <tag>Latent Diffusion Models</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>DDIM</title>
+    <link href="/2023/10/05/DDIM/"/>
+    <url>/2023/10/05/DDIM/</url>
+    
+    <content type="html"><![CDATA[<p>跟着张老师学扩散模型系列2——DDIM，会持续更新。</p><p><strong>paper</strong>：<a href="https://arxiv.org/abs/2010.02502">https://arxiv.org/abs/2010.02502</a></p><p>DDIM通过去马尔可夫化的方式来实现加速采样，且生成样本的过程是确定的：<a href="https://zhuanlan.zhihu.com/p/627616358">https://zhuanlan.zhihu.com/p/627616358</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Diffusion Model</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>DDIM</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>[论文阅读] RALM 2</title>
     <link href="/2023/10/04/RALM2/"/>
     <url>/2023/10/04/RALM2/</url>
@@ -50,6 +102,31 @@
       <tag>NLP</tag>
       
       <tag>IR</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>DDPM</title>
+    <link href="/2023/09/30/DDPM/"/>
+    <url>/2023/09/30/DDPM/</url>
+    
+    <content type="html"><![CDATA[<p>zxc同学提供的DDPM学习路线（yyds）！</p><p><s>由于自己一直以来疏于整理，在查找一些读过的对自己很有帮助的文章上效率十分低下</s>，所以想以这种形式来方便自己学习/复习（也是搭博客的初衷了）。</p><p>希望能早点学完DDPM！会持续更新。</p><p><strong>前向过程和反向过程</strong>：<a href="https://zhuanlan.zhihu.com/p/610012156">https://zhuanlan.zhihu.com/p/610012156</a></p><p><strong>优化目标（损失函数）</strong>：</p><ul><li><p><a href="https://zhuanlan.zhihu.com/p/563661713">https://zhuanlan.zhihu.com/p/563661713</a></p></li><li><p><a href="https://lilianweng.github.io/posts/2021-07-11-diffusion-models/">https://lilianweng.github.io/posts/2021-07-11-diffusion-models/</a></p></li></ul><p><strong>整体框架、流程</strong>：<a href="https://zhuanlan.zhihu.com/p/652684897">https://zhuanlan.zhihu.com/p/652684897</a></p><p>补充知识：<a href="https://zhuanlan.zhihu.com/p/542478018">重参数技巧</a>、<a href="https://blog.csdn.net/m0_46385527/article/details/121149701">变分推断</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Diffusion Model</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>DDPM</tag>
       
     </tags>
     
